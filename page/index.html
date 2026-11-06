@@ -330,4 +330,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <footer><div class="wrap"><span>Rumbo Sur Trading · Tu producto, al mundo.</span><span>Buenos Aires, Argentina</span></div></footer>
 
+<script>
+  const form = document.getElementById("form-contacto");
+  form.elements.namedItem("_next").value = new URL("gracias.html", window.location.href).href;
+</script>
+
 </body></html>
