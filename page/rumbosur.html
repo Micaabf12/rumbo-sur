@@ -129,13 +129,16 @@ section.alt .step{background:var(--bg)}
 .form .f{min-width:0;display:flex;flex-direction:column;gap:6px}
 .form .full{grid-column:1/-1}
 .form label{font-family:var(--font-display);letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--hero-accent)}
-.form input,.form select,.form textarea{font:inherit;font-size:17px;color:#F2F5F7;background:#12304B;border:1.5px solid #3B5A74;border-radius:2px;padding:11px 12px;width:100%;min-width:0}
-.form textarea{resize:vertical}
+.form input,.form select,.form textarea{font:inherit;font-size:17px;color:var(--hero-fg);background:#12304B;border:1.5px solid #3B5A74;border-radius:2px;padding:11px 12px;width:100%;min-width:0}
+.form select[multiple]{min-height:144px}
+.form select option:checked{background:var(--sea);color:#fff}
+.form textarea{resize:vertical;min-height:130px}
 .form input::placeholder,.form textarea::placeholder{color:#7F9BB0}
 .form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid var(--container);outline-offset:1px;border-color:var(--container)}
 .form [aria-invalid="true"]{border-color:#FF8A80}
 .form .actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
 .form .btn{margin-top:0;border:0;font:inherit;font-weight:700;cursor:pointer}
+.form .btn:hover{filter:brightness(1.08)}
 .estado{margin:0;font-weight:600;max-width:52ch}
 .estado.ok{color:#9FE0B5}
 .estado.err{color:#FFB4AC}
@@ -275,56 +278,57 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div>
       <p class="eyebrow" style="color:var(--hero-accent)">Contacto</p>
       <h2>Hablemos de tu próxima exportación.</h2>
-      <form id="form-contacto" class="form" action="https://formsubmit.co/micaelabelenfronti2@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Nueva consulta desde Rumbo Sur Trading">
+      <form class="form" action="https://formsubmit.io/f/5d991189-cdae-48a5-adc9-4f0646c4c12d" method="POST">
         <div class="f">
           <label for="nombre">Nombre y apellido</label>
-          <input id="nombre" name="name" type="text" autocomplete="name" required>
+          <input id="nombre" type="text" name="Nombre y apellido" autocomplete="name" required>
         </div>
         <div class="f">
           <label for="empresa">Empresa o emprendimiento</label>
-          <input id="empresa" name="empresa" type="text" autocomplete="organization">
+          <input id="empresa" type="text" name="Empresa o emprendimiento" autocomplete="organization" required>
         </div>
         <div class="f">
           <label for="telefono">Teléfono / WhatsApp</label>
-          <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+54 9 11 0000-0000">
+          <input id="telefono" type="tel" name="Telefono/whatsapp" autocomplete="tel" required>
         </div>
         <div class="f">
-          <label for="correo">Correo</label>
-          <input id="correo" name="email" type="email" autocomplete="email" required placeholder="correo@tuempresa.com">
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="email" name="Email" autocomplete="email" required>
         </div>
         <div class="f">
-          <label for="rubro">Qué producís</label>
-          <select id="rubro" name="rubro" required>
-            <option value="">Elegí un rubro</option>
-            <option>Mieles y dulces</option>
-            <option>Infusiones</option>
-            <option>Aceite de oliva y olivícola</option>
-            <option>Lácteos</option>
-            <option>Arroz, legumbres y maní</option>
-            <option>Frutas y hortalizas</option>
-            <option>Otro</option>
+          <label for="productos">¿Qué producís?</label>
+          <select id="productos" name="Que producis" multiple required>
+            <option>mieles y dulces</option>
+            <option>infusiones</option>
+            <option>aceite de oliva y olivicola</option>
+            <option>lacteos</option>
+            <option>arroz, legumbres y maní</option>
+            <option>frutas y hortalizas</option>
+            <option>otro</option>
           </select>
         </div>
         <div class="f">
           <label for="destino">Destino que te interesa</label>
-          <select id="destino" name="destino">
-            <option value="">Todavía no sé</option>
-            <option>Brasil</option>
-            <option>Estados Unidos</option>
-            <option>Unión Europea</option>
+          <select id="destino" name="Destino que te interesa" multiple>
+            <option>Todavía no sé</option>
             <option>India</option>
             <option>China</option>
+            <option>Estados Unidos</option>
+            <option>Brasil</option>
+            <option>Unión Europea</option>
           </select>
         </div>
         <div class="f full">
-          <label for="mensaje">Contanos sobre tu producto</label>
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Qué producís, en qué volumen y si ya exportaste antes."></textarea>
+          <label for="producto">Contanos sobre tu producto</label>
+          <textarea id="producto" name="Contanos sobre tu producto" required></textarea>
         </div>
-        <div class="f full actions">
+        <!-- Honeypot: bots fill it in, people never see it. Leave it empty. -->
+        <input type="text" name="_formsubmit_id" tabindex="-1" autocomplete="off" hidden>
+        <div class="f actions full">
           <button class="btn" type="submit">Enviar consulta</button>
         </div>
       </form>
+        </div>
       <p class="origen">Salimos desde Buenos Aires, Argentina</p>
     </div>
   </div>
