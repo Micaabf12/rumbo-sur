@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracias por contactarnos | Rumbo Sur Trading</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --azul: #0d2339;
+      --naranja: #f58b50;
+      --blanco: #f1f4f8;
+      --gris: #cbd6e1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--azul);
+      color: var(--blanco);
+      font-family: 'Barlow', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 25px max(24px, 10%);
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: var(--blanco);
+    }
+
+    .logo span {
+      color: var(--naranja);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+
+    .contenido {
+      max-width: 720px;
+      text-align: center;
+    }
+
+    .check {
+      width: 75px;
+      height: 75px;
+      border: 2px solid var(--naranja);
+      border-radius: 50%;
+      color: var(--naranja);
+      font-size: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+    }
+
+    .subtitulo {
+      color: var(--naranja);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(46px, 8vw, 85px);
+      font-weight: 800;
+      line-height: 1.05;
+      margin: 18px 0 25px;
+    }
+
+    h1 span {
+      color: var(--naranja);
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--gris);
+      max-width: 570px;
+      margin: 0 auto;
+    }
+
+    .boton {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 17px 35px;
+      background: #e9662c;
+      color: white;
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .boton:hover {
+      background: var(--naranja);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: #9aafc1;
+      font-size: 13px;
+      border-top: 1px solid #30475d;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px;
+      }
+
+      p {
+        font-size: 17px;
+      }
+
+      .boton {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="rumbosur.html" class="logo">
+      RUMBO <span>SUR</span> TRADING
+    </a>
+  </header>
+
+  <main>
+    <section class="contenido">
+      <div class="check" aria-hidden="true">✓</div>
+
+      <div class="subtitulo">
+        MENSAJE ENVIADO
+      </div>
+
+      <h1>
+        ¡GRACIAS POR<br>
+        <span>CONTACTARNOS!</span>
+      </h1>
+
+      <p>
+        Recibimos tu consulta correctamente.
+        Nuestro equipo de Rumbo Sur Trading
+        se pondrá en contacto con vos a la brevedad.
+        <br><br>
+        ¡Gracias por confiar en nosotros!
+      </p>
+
+      <a href="rumbosur.html" class="boton">
+        VOLVER AL INICIO →
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    BUENOS AIRES, ARGENTINA · RUMBO SUR TRADING
+  </footer>
+
+</body>
+</html>

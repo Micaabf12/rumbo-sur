@@ -122,26 +122,18 @@ section.alt .step{background:var(--bg)}
 .contact{background:var(--hero-bg);color:var(--hero-fg)}
 .contact .wrap{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
 .contact h2{font-size:clamp(40px,6.5vw,68px);font-weight:700}
-.contact dl{margin:28px 0 0;display:grid;gap:16px}
-.contact dt{font-family:var(--font-display);letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--hero-accent)}
-.contact dd{margin:2px 0 0;font-size:20px;user-select:all;overflow-wrap:anywhere}
 .form{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}
 .form .f{min-width:0;display:flex;flex-direction:column;gap:6px}
 .form .full{grid-column:1/-1}
 .form label{font-family:var(--font-display);letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--hero-accent)}
-.form input,.form select,.form textarea{font:inherit;font-size:17px;color:var(--hero-fg);background:#12304B;border:1.5px solid #3B5A74;border-radius:2px;padding:11px 12px;width:100%;min-width:0}
+.form input,.form select,.form textarea{font:inherit;font-size:17px;color:var(--hero-fg);background:#12304B;border:1.5px solid #3B5A74;border-radius:2px;padding:11px 12px;width:100%;min-width:0;color-scheme:dark}
 .form select[multiple]{min-height:144px}
 .form select option:checked{background:var(--sea);color:#fff}
 .form textarea{resize:vertical;min-height:130px}
-.form input::placeholder,.form textarea::placeholder{color:#7F9BB0}
 .form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid var(--container);outline-offset:1px;border-color:var(--container)}
-.form [aria-invalid="true"]{border-color:#FF8A80}
+.form-success{margin-top:24px;padding:18px 20px;background:#12304B;border-left:4px solid var(--hero-accent);color:var(--hero-fg);font-size:18px}
 .form .actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
 .form .btn{margin-top:0;border:0;font:inherit;font-weight:700;cursor:pointer}
-.form .btn:hover{filter:brightness(1.08)}
-.estado{margin:0;font-weight:600;max-width:52ch}
-.estado.ok{color:#9FE0B5}
-.estado.err{color:#FFB4AC}
 .origen{margin-top:22px;color:#9DB6C8;font-size:15px}
 footer{background:#06131F;color:#9DB6C8;font-size:14px;padding-block:20px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -278,7 +270,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div>
       <p class="eyebrow" style="color:var(--hero-accent)">Contacto</p>
       <h2>Hablemos de tu próxima exportación.</h2>
-      <form class="form" action="https://formsubmit.io/f/5d991189-cdae-48a5-adc9-4f0646c4c12d" method="POST">
+      <form id="form-contacto" class="form" action="https://formsubmit.io/f/5d991189-cdae-48a5-adc9-4f0646c4c12d" method="POST">
         <div class="f">
           <label for="nombre">Nombre y apellido</label>
           <input id="nombre" type="text" name="Nombre y apellido" autocomplete="name" required>
@@ -322,16 +314,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <label for="producto">Contanos sobre tu producto</label>
           <textarea id="producto" name="Contanos sobre tu producto" required></textarea>
         </div>
+        <input type="hidden" name="_next">
         <!-- Honeypot: bots fill it in, people never see it. Leave it empty. -->
         <input type="text" name="_formsubmit_id" tabindex="-1" autocomplete="off" hidden>
         <div class="f actions full">
           <button class="btn" type="submit">Enviar consulta</button>
         </div>
       </form>
+      <p id="form-success" class="form-success" role="status" tabindex="-1" hidden>¡Gracias por escribirnos! Recibimos tu consulta y nos pondremos en contacto con vos pronto.</p>
         </div>
       <p class="origen">Salimos desde Buenos Aires, Argentina</p>
     </div>
-  </div>
 </section>
 </main>
 
