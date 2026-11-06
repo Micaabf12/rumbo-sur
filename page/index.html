@@ -1,0 +1,333 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Rumbo Sur Trading</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: banda de portada naval, luego secciones en grilla; el recorrido Buenos Aires -> puertos es la pieza central.
+   Paleta provisoria (azul naval + naranja de contenedor): cambiar los tokens cuando se confirmen los colores del folleto. */
+:root{
+  --navy:#0B2239;
+  --sea:#1C6E8C;
+  --container:#E2622A;
+  --bg:#F2F5F7;
+  --surface:#FFFFFF;
+  --fg:#0B2239;
+  --muted:#4C6174;
+  --line:#CBD6DE;
+  --accent:#C2501B;
+  --hero-bg:#0B2239;
+  --hero-fg:#F2F5F7;
+  --hero-accent:#F28A52;
+  --font-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --font-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#08141F;--surface:#0F2133;--fg:#E6EEF4;--muted:#98AEBF;--line:#22394D;--accent:#F28A52;--sea:#5BB0CC;--hero-bg:#0B2239;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08141F;--surface:#0F2133;--fg:#E6EEF4;--muted:#98AEBF;--line:#22394D;--accent:#F28A52;--sea:#5BB0CC;--hero-bg:#0B2239;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.55;margin:0}
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--container);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--font-display);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:15px;color:var(--accent)}
+
+/* Nav */
+.nav{background:var(--hero-bg);color:var(--hero-fg)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:14px}
+.brand{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.brand span{color:var(--hero-accent)}
+.nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav a.l{font-size:15px;text-decoration:none;opacity:.85}
+.nav a.l:hover{opacity:1;text-decoration:underline}
+
+/* Hero */
+.hero{background:var(--hero-bg);color:var(--hero-fg);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:56px 64px}
+.hero h1{font-size:clamp(52px,9vw,104px);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--hero-accent)}
+.hero p.lead{font-size:19px;max-width:46ch;margin-top:20px;color:#D5E1EA}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;padding:0;list-style:none}
+.chips li{font-family:var(--font-display);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:15px;border:1.5px solid #3B5A74;padding:4px 12px;border-radius:2px;color:#E6EEF4}
+.btn{display:inline-block;margin-top:28px;background:var(--container);color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:2px}
+.btn:hover{filter:brightness(1.08)}
+.waves{position:absolute;left:0;right:0;bottom:0;height:18px;background:
+  repeating-linear-gradient(90deg,transparent 0 22px,rgba(255,255,255,.06) 22px 44px);pointer-events:none}
+
+/* Placeholders de medios */
+.slot{position:relative;background:color-mix(in srgb,var(--sea) 14%,var(--surface));border:2px dashed color-mix(in srgb,var(--sea) 60%,transparent);border-radius:4px;display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);aspect-ratio:4/3;max-width:100%}
+.hero .slot{background:#12304B;border-color:#3B5A74;color:#9DB6C8}
+.slot strong{display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.1em;font-size:16px;color:var(--fg)}
+.hero .slot strong{color:#E6EEF4}
+.slot small{display:block;font-size:14px;margin-top:4px}
+.slot.wide{aspect-ratio:16/9}
+.slot img,.slot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px}
+
+/* Secciones */
+section{padding-block:68px}
+section.alt{background:var(--surface);border-block:1px solid var(--line)}
+.head{max-width:720px;margin-bottom:36px}
+.head h2{font-size:clamp(38px,6vw,60px);font-weight:700;margin-top:8px}
+.head p{color:var(--muted);margin-top:14px}
+
+/* Servicios */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);padding:0;list-style:none;margin:0}
+.services li{padding:22px 20px 22px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:baseline;min-width:0}
+.services .n{font-family:var(--font-display);font-weight:700;font-size:28px;color:var(--accent);min-width:34px}
+.services .t{font-weight:600;font-size:19px}
+.diff{margin-top:28px;padding:20px 24px;background:var(--navy);color:#F2F5F7;border-left:6px solid var(--container);max-width:760px;font-size:19px}
+.diff b{color:#F28A52}
+
+/* Rubros */
+.rubros{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rubro{background:var(--surface);border:1px solid var(--line);padding:22px;border-radius:4px;min-width:0}
+section.alt .rubro{background:var(--bg)}
+.rubro h3{font-size:26px;font-weight:700}
+.rubro p{color:var(--muted);margin-top:6px}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.photos .slot{aspect-ratio:1/1}
+
+/* Rutas */
+.routes{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.route{display:grid;grid-template-columns:200px 1fr;gap:6px 20px;align-items:center}
+.route .who{min-width:0}
+.route .who b{display:block;font-family:var(--font-display);font-size:24px;text-transform:uppercase;letter-spacing:.03em;line-height:1.1}
+.route .who span{font-size:15px;color:var(--muted)}
+.track{position:relative;height:34px;background:color-mix(in srgb,var(--sea) 12%,transparent);border-radius:2px;min-width:0}
+.bar{height:100%;background:var(--sea);border-radius:2px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-weight:700;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:max-content}
+.bar.far{background:var(--navy)}
+:root[data-theme="dark"] .bar.far{background:#2F6A8A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar.far{background:#2F6A8A}}
+.note{font-size:15px;color:var(--muted);margin-top:22px;max-width:70ch}
+.scale{display:grid;grid-template-columns:200px 1fr;gap:20px;margin-top:6px;font-size:13px;color:var(--muted)}
+.scale div:last-child{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+
+/* Pasos */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0;margin:0;list-style:none;counter-reset:s}
+.step{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--sea);padding:18px;border-radius:2px;min-width:0}
+section.alt .step{background:var(--bg)}
+.step::before{content:counter(s);font-family:var(--font-display);font-weight:700;font-size:40px;line-height:1;color:var(--sea);display:block}
+.step b{display:block;font-size:18px;margin-top:6px}
+.step.key{border-top-color:var(--container);background:var(--navy);color:#F2F5F7;border-color:var(--navy)}
+.step.key::before{color:#F28A52}
+.step.key small{display:block;margin-top:8px;color:#F28A52;font-weight:600;font-size:15px}
+
+/* Contacto */
+.contact{background:var(--hero-bg);color:var(--hero-fg)}
+.contact .wrap{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+.contact h2{font-size:clamp(40px,6.5vw,68px);font-weight:700}
+.form{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}
+.form .f{min-width:0;display:flex;flex-direction:column;gap:6px}
+.form .full{grid-column:1/-1}
+.form label{font-family:var(--font-display);letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--hero-accent)}
+.form input,.form select,.form textarea{font:inherit;font-size:17px;color:var(--hero-fg);background:#12304B;border:1.5px solid #3B5A74;border-radius:2px;padding:11px 12px;width:100%;min-width:0;color-scheme:dark}
+.form select[multiple]{min-height:144px}
+.form select option:checked{background:var(--sea);color:#fff}
+.form textarea{resize:vertical;min-height:130px}
+.form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid var(--container);outline-offset:1px;border-color:var(--container)}
+.form-success{margin-top:24px;padding:18px 20px;background:#12304B;border-left:4px solid var(--hero-accent);color:var(--hero-fg);font-size:18px}
+.form .actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
+.form .btn{margin-top:0;border:0;font:inherit;font-weight:700;cursor:pointer}
+.origen{margin-top:22px;color:#9DB6C8;font-size:15px}
+footer{background:#06131F;color:#9DB6C8;font-size:14px;padding-block:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero .wrap,.contact .wrap{grid-template-columns:1fr}
+  .services,.rubros,.photos{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  section{padding-block:48px}
+  .services,.rubros,.steps{grid-template-columns:1fr}
+  .photos{grid-template-columns:1fr 1fr}
+  .route,.scale{grid-template-columns:1fr}
+  .scale div:first-child{display:none}
+  .nav ul{gap:14px}
+  .form{grid-template-columns:1fr}
+}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Rumbo <span>Sur</span> Trading</a>
+    <nav aria-label="Principal"><ul>
+      <li><a class="l" href="#que-hacemos">Qué hacemos</a></li>
+      <li><a class="l" href="#que-exportamos">Qué exportamos</a></li>
+      <li><a class="l" href="#adonde-llegamos">Adónde llegamos</a></li>
+      <li><a class="l" href="#como-lo-hacemos">Cómo lo hacemos</a></li>
+      <li><a class="l" href="#contacto">Contacto</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main id="inicio">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color:var(--hero-accent)">Buenos Aires, Argentina</p>
+      <h1>Tu producto, <em>al mundo.</em></h1>
+      <p class="lead">Exportamos alimentos argentinos de pymes y productores, con el trámite aduanero resuelto de punta a punta.</p>
+      <ul class="chips" aria-label="Productos">
+        <li>Miel</li><li>Yerba</li><li>Maní</li><li>Aceite</li><li>Quesos</li><li>Arroz</li>
+      </ul>
+      <a class="btn" href="#contacto">Hablemos de tu exportación</a>
+    </div>
+    <!-- Reemplazar por foto o video de portada -->
+    <div class="slot" id="media-portada"><div><strong>Foto o video de portada</strong><small>Buque con contenedores saliendo de Buenos Aires</small></div></div>
+  </div>
+  <div class="waves" aria-hidden="true"></div>
+</div>
+
+<section id="que-hacemos">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Qué hacemos</p>
+      <h2>Vos producís. Nosotros nos ocupamos del resto.</h2>
+    </div>
+    <ol class="services">
+      <li><span class="n">01</span><span class="t">Búsqueda de compradores</span></li>
+      <li><span class="n">02</span><span class="t">Negociación</span></li>
+      <li><span class="n">03</span><span class="t">Documentación</span></li>
+      <li><span class="n">04</span><span class="t">Despacho aduanero</span></li>
+      <li><span class="n">05</span><span class="t">Flete internacional</span></li>
+      <li><span class="n">06</span><span class="t">Seguimiento del cobro</span></li>
+    </ol>
+    <p class="diff"><b>Nuestro diferencial:</b> manejamos el trámite aduanero de punta a punta.</p>
+  </div>
+</section>
+
+<section id="que-exportamos" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Qué exportamos</p>
+      <h2>Alimentos de las economías regionales.</h2>
+    </div>
+    <div class="rubros">
+      <article class="rubro"><h3>Mieles y dulces</h3><p>Miel, dulce de leche</p></article>
+      <article class="rubro"><h3>Infusiones</h3><p>Yerba mate, té</p></article>
+      <article class="rubro"><h3>Aceite de oliva y olivícola</h3><p>Aceite, aceitunas</p></article>
+      <article class="rubro"><h3>Lácteos</h3><p>Quesos, leche en polvo</p></article>
+      <article class="rubro"><h3>Arroz, legumbres y maní</h3><p>Arroz, lentejas, garbanzos, maní</p></article>
+      <article class="rubro"><h3>Frutas y hortalizas</h3><p>Frutas de carozo, pasas de uva, ajo</p></article>
+    </div>
+    <!-- Reemplazar cada recuadro por una foto de producto -->
+    <div class="photos">
+      <div class="slot"><div><strong>Foto de producto</strong><small>Miel</small></div></div>
+      <div class="slot"><div><strong>Foto de producto</strong><small>Yerba mate</small></div></div>
+      <div class="slot"><div><strong>Foto de producto</strong><small>Aceite de oliva</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="adonde-llegamos">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Adónde llegamos</p>
+      <h2>Salimos de Buenos Aires hacia los principales mercados.</h2>
+    </div>
+    <ul class="routes" aria-label="Días de tránsito desde Buenos Aires">
+      <li class="route"><div class="who"><b>Brasil</b><span>Puerto de Santos</span></div><div class="track"><div class="bar" style="width:18%">6–8 días</div></div></li>
+      <li class="route"><div class="who"><b>Estados Unidos</b><span>Puerto de Houston</span></div><div class="track"><div class="bar" style="width:50%">≈20 días</div></div></li>
+      <li class="route"><div class="who"><b>India</b><span>Puerto de Nhava Sheva</span></div><div class="track"><div class="bar" style="width:65%">≈26 días</div></div></li>
+      <li class="route"><div class="who"><b>Unión Europea</b><span>Puerto de Rotterdam</span></div><div class="track"><div class="bar far" style="width:74%">27–32 días</div></div></li>
+      <li class="route"><div class="who"><b>China</b><span>Puerto de Shanghái</span></div><div class="track"><div class="bar far" style="width:98%">38–40 días</div></div></li>
+    </ul>
+    <div class="scale" aria-hidden="true"><div></div><div><span>0</span><span>10</span><span>20</span><span>30</span><span>40 días</span></div></div>
+    <p class="note">Tiempos aproximados de puerto a puerto, en contenedor completo. Se confirman al cotizar con la naviera.</p>
+    <!-- Reemplazar por video o foto de puerto / barco -->
+    <div class="slot wide" style="margin-top:32px"><div><strong>Video o foto de puerto</strong><small>Barco cargando contenedores</small></div></div>
+  </div>
+</section>
+
+<section id="como-lo-hacemos" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Cómo lo hacemos</p>
+      <h2>Ocho pasos, del acuerdo al cobro.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><b>Acuerdo comercial</b></li>
+      <li class="step"><b>Preparar la mercadería</b></li>
+      <li class="step"><b>Contratar el transporte</b></li>
+      <li class="step key"><b>Declaración de exportación</b><small>Acá interviene el despachante de aduana</small></li>
+      <li class="step"><b>Derechos de exportación</b></li>
+      <li class="step"><b>Verificación aduanera</b></li>
+      <li class="step"><b>Embarque</b></li>
+      <li class="step"><b>Cobro y cierre</b></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color:var(--hero-accent)">Contacto</p>
+      <h2>Hablemos de tu próxima exportación.</h2>
+      <form id="form-contacto" class="form" action="https://formsubmit.io/f/5d991189-cdae-48a5-adc9-4f0646c4c12d" method="POST">
+        <div class="f">
+          <label for="nombre">Nombre y apellido</label>
+          <input id="nombre" type="text" name="Nombre y apellido" autocomplete="name" required>
+        </div>
+        <div class="f">
+          <label for="empresa">Empresa o emprendimiento</label>
+          <input id="empresa" type="text" name="Empresa o emprendimiento" autocomplete="organization" required>
+        </div>
+        <div class="f">
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input id="telefono" type="tel" name="Telefono/whatsapp" autocomplete="tel" required>
+        </div>
+        <div class="f">
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="email" name="Email" autocomplete="email" required>
+        </div>
+        <div class="f">
+          <label for="productos">¿Qué producís?</label>
+          <select id="productos" name="Que producis" multiple required>
+            <option>mieles y dulces</option>
+            <option>infusiones</option>
+            <option>aceite de oliva y olivicola</option>
+            <option>lacteos</option>
+            <option>arroz, legumbres y maní</option>
+            <option>frutas y hortalizas</option>
+            <option>otro</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="destino">Destino que te interesa</label>
+          <select id="destino" name="Destino que te interesa" multiple>
+            <option>Todavía no sé</option>
+            <option>India</option>
+            <option>China</option>
+            <option>Estados Unidos</option>
+            <option>Brasil</option>
+            <option>Unión Europea</option>
+          </select>
+        </div>
+        <div class="f full">
+          <label for="producto">Contanos sobre tu producto</label>
+          <textarea id="producto" name="Contanos sobre tu producto" required></textarea>
+        </div>
+        <input type="hidden" name="_next">
+        <!-- Honeypot: bots fill it in, people never see it. Leave it empty. -->
+        <input type="text" name="_formsubmit_id" tabindex="-1" autocomplete="off" hidden>
+        <div class="f actions full">
+          <button class="btn" type="submit">Enviar consulta</button>
+        </div>
+      </form>
+      <p id="form-success" class="form-success" role="status" tabindex="-1" hidden>¡Gracias por escribirnos! Recibimos tu consulta y nos pondremos en contacto con vos pronto.</p>
+        </div>
+      <p class="origen">Salimos desde Buenos Aires, Argentina</p>
+    </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Rumbo Sur Trading · Tu producto, al mundo.</span><span>Buenos Aires, Argentina</span></div></footer>
+
+</body></html>
