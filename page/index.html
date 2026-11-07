@@ -63,11 +63,15 @@ a{color:inherit}
 /* Placeholders de medios */
 .slot{position:relative;background:color-mix(in srgb,var(--sea) 14%,var(--surface));border:2px dashed color-mix(in srgb,var(--sea) 60%,transparent);border-radius:4px;display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);aspect-ratio:4/3;max-width:100%}
 .hero .slot{background:#12304B;border-color:#3B5A74;color:#9DB6C8}
+#media-portada{aspect-ratio:9/16;width:min(100%,300px);padding:0;justify-self:center;overflow:hidden}
 .slot strong{display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.1em;font-size:16px;color:var(--fg)}
 .hero .slot strong{color:#E6EEF4}
 .slot small{display:block;font-size:14px;margin-top:4px}
 .slot.wide{aspect-ratio:16/9}
 .slot img,.slot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px}
+.port-video{margin-top:32px}
+.port-video .slot{aspect-ratio:16/9;padding:0;overflow:hidden}
+.port-video p{margin-top:10px;color:var(--muted);font-size:15px}
 
 /* Secciones */
 section{padding-block:68px}
@@ -91,7 +95,7 @@ section.alt .rubro{background:var(--bg)}
 .rubro h3{font-size:26px;font-weight:700}
 .rubro p{color:var(--muted);margin-top:6px}
 .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-.photos .slot{aspect-ratio:1/1}
+.photos .slot{aspect-ratio:1/1;padding:0;overflow:hidden;border-style:solid}
 
 /* Rutas */
 .routes{display:grid;gap:14px;margin:0;padding:0;list-style:none}
@@ -132,6 +136,10 @@ section.alt .step{background:var(--bg)}
 .form textarea{resize:vertical;min-height:130px}
 .form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid var(--container);outline-offset:1px;border-color:var(--container)}
 .form-success{margin-top:24px;padding:18px 20px;background:#12304B;border-left:4px solid var(--hero-accent);color:var(--hero-fg);font-size:18px}
+.form-success .mensaje-check{width:48px;height:48px;border:2px solid var(--hero-accent);border-radius:50%;color:var(--hero-accent);font-size:28px;display:grid;place-items:center;margin-bottom:14px}
+.form-success .eyebrow{color:var(--hero-accent)}
+.form-success h3{font-size:clamp(30px,5vw,44px);margin:8px 0 12px}
+.form-success p:not(.eyebrow){color:#cbd6e1;line-height:1.6}
 .form .actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px}
 .form .btn{margin-top:0;border:0;font:inherit;font-weight:700;cursor:pointer}
 .origen{margin-top:22px;color:#9DB6C8;font-size:15px}
@@ -152,6 +160,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .nav ul{gap:14px}
   .form{grid-template-columns:1fr}
 }
+
 </style>
 
 <header class="nav">
@@ -180,7 +189,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a class="btn" href="#contacto">Hablemos de tu exportación</a>
     </div>
     <!-- Reemplazar por foto o video de portada -->
-    <div class="slot" id="media-portada"><div><strong>Foto o video de portada</strong><small>Buque con contenedores saliendo de Buenos Aires</small></div></div>
+    <div class="slot" id="media-portada">
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Buque con contenedores saliendo de Buenos Aires">
+        <source src="portada.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+      </video>
+    </div>
   </div>
   <div class="waves" aria-hidden="true"></div>
 </div>
@@ -219,9 +233,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
     <!-- Reemplazar cada recuadro por una foto de producto -->
     <div class="photos">
-      <div class="slot"><div><strong>Foto de producto</strong><small>Miel</small></div></div>
-      <div class="slot"><div><strong>Foto de producto</strong><small>Yerba mate</small></div></div>
-      <div class="slot"><div><strong>Foto de producto</strong><small>Aceite de oliva</small></div></div>
+      <div class="slot"><img src="miel.jpeg" alt="Frascos de miel y panal"></div>
+      <div class="slot"><img src="yerba-mate.jpeg" alt="Yerba mate y mate de calabaza"></div>
+      <div class="slot"><img src="aceite-oliva.jpg" alt="Aceite de oliva extra virgen"></div>
     </div>
   </div>
 </section>
@@ -241,8 +255,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </ul>
     <div class="scale" aria-hidden="true"><div></div><div><span>0</span><span>10</span><span>20</span><span>30</span><span>40 días</span></div></div>
     <p class="note">Tiempos aproximados de puerto a puerto, en contenedor completo. Se confirman al cotizar con la naviera.</p>
-    <!-- Reemplazar por video o foto de puerto / barco -->
-    <div class="slot wide" style="margin-top:32px"><div><strong>Video o foto de puerto</strong><small>Barco cargando contenedores</small></div></div>
+    <div class="port-video">
+      <div class="slot wide">
+        <video controls playsinline preload="metadata" aria-label="Video informativo del Puerto Buenos Aires">
+          <source src="puerto-buenos-aires.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
+      <p>Video informativo brindado por el Puerto Buenos Aires</p>
+    </div>
   </div>
 </section>
 
@@ -270,7 +291,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div>
       <p class="eyebrow" style="color:var(--hero-accent)">Contacto</p>
       <h2>Hablemos de tu próxima exportación.</h2>
-      <form id="form-contacto" class="form" action="https://formsubmit.io/f/5d991189-cdae-48a5-adc9-4f0646c4c12d" method="POST">
+      <form id="form-contacto" class="form" action="https://formsubmit.io/f/5d991189-cdae-48a5-adc9-4f0646c4c12d" method="POST" target="formsubmit-response">
         <div class="f">
           <label for="nombre">Nombre y apellido</label>
           <input id="nombre" type="text" name="Nombre y apellido" autocomplete="name" required>
@@ -314,15 +335,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <label for="producto">Contanos sobre tu producto</label>
           <textarea id="producto" name="Contanos sobre tu producto" required></textarea>
         </div>
-        <input type="hidden" name="_next">
         <!-- Honeypot: bots fill it in, people never see it. Leave it empty. -->
         <input type="text" name="_formsubmit_id" tabindex="-1" autocomplete="off" hidden>
         <div class="f actions full">
           <button class="btn" type="submit">Enviar consulta</button>
         </div>
       </form>
-      <p id="form-success" class="form-success" role="status" tabindex="-1" hidden>¡Gracias por escribirnos! Recibimos tu consulta y nos pondremos en contacto con vos pronto.</p>
-        </div>
+      <iframe name="formsubmit-response" title="Respuesta del formulario" hidden></iframe>
+      <div id="mensaje-gracias" class="form-success" role="status" aria-live="polite" hidden>
+        <div class="mensaje-check" aria-hidden="true">✓</div>
+        <p class="eyebrow">MENSAJE ENVIADO</p>
+        <h3>¡Gracias por contactarnos!</h3>
+        <p>
+          Recibimos tu consulta correctamente. Nuestro equipo de Rumbo Sur Trading
+          se pondrá en contacto con vos a la brevedad.<br><br>
+          ¡Gracias por confiar en nosotros!
+        </p>
+      </div>
+    </div>
       <p class="origen">Salimos desde Buenos Aires, Argentina</p>
     </div>
 </section>
@@ -332,7 +362,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <script>
   const form = document.getElementById("form-contacto");
-  form.elements.namedItem("_next").value = new URL("gracias.html", window.location.href).href;
+  const mensajeGracias = document.getElementById("mensaje-gracias");
+
+  form.addEventListener("submit", () => {
+    mensajeGracias.hidden = false;
+    window.setTimeout(() => form.reset(), 0);
+  });
+
+  form.addEventListener("input", () => {
+    mensajeGracias.hidden = true;
+  });
 </script>
 
 </body></html>
